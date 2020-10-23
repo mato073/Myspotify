@@ -12,7 +12,7 @@ class AppRouter extends React.Component {
                     <Switch>
                         <Route path="/" component={App} exact={true} />
                         <Route path="/login" component={Login} />
-                        <Route path="/Home" component={Home} />
+                        <Route path="/home" component={Home} />
                     </Switch>
                 </div>
 

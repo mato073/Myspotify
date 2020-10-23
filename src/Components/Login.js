@@ -4,7 +4,7 @@ import hash from "../hash.js";
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 const clientId = "bf5aba2f7f5b4efe956739f92460473d";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "http://localhost:3000/home";
 const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state"
