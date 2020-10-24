@@ -1,12 +1,17 @@
 const initialState = {
-    token: null
+    access_token: null,
+    expiryTime: null
 };
 
 function Reducer (state = initialState, action) {
     switch (action.type) {
         case "SETTOKEN":
             return {
-                token: action.token
+                access_token: action.access_token
+            };
+        case "SETEXPIR":
+            return {
+                expiryTime: action.expiryTime
             };
     }
 }
