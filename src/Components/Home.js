@@ -13,7 +13,7 @@ class Home extends Component {
         <p>You are in the Home Component</p>
         <p>Token = {this.props.token}</p>
         <p>Time = {this.props.time}</p>
-            <Footer/>
+            <Footer />
         </>
     );
     }
@@ -21,7 +21,7 @@ class Home extends Component {
 
 const mapStateToProps = (state) => ({
     token: state.access_token,
-    time: state.expiryTime
+    time: state.expiryTime,
 });
 
 export default connect(mapStateToProps)(Home);

@@ -6,11 +6,11 @@ import _ from 'lodash';
 class RedirectPage extends Component {
 
     storeToken(token) {
-        console.log('token =', token);
+        localStorage.setItem('token', token);
         this.props.dispatch({type: "SETTOKEN", token});
     }
     storeTime(expiryTime) {
-        console.log('Time =', expiryTime);
+        localStorage.setItem('expiry_time', expiryTime);
         this.props.dispatch({type: "SETEXPiR", expiryTime});
     }
 
