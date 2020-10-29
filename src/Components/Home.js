@@ -3,6 +3,8 @@ import Header from './Header';
 import Footer from './Footer'
 import { connect } from 'react-redux';
 
+import {Get_User, Get_Playliste, Get_Top_Artist} from '../services/api_call'
+
 
 class Home extends Component {
 
