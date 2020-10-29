@@ -7,12 +7,16 @@ function Reducer (state = initialState, action) {
     switch (action.type) {
         case "SETTOKEN":
             return {
-                access_token: action.access_token
+                ...state,
+                access_token: action.token
             };
-        case "SETEXPIR":
+        case "SETEXPiR":
             return {
+                ...state,
                 expiryTime: action.expiryTime
             };
+        default:
+            return state;
     }
 }
 
