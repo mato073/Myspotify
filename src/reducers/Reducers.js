@@ -1,9 +1,9 @@
 const initialState = {
     access_token: localStorage.getItem('token'),
     expiryTime: localStorage.getItem('expiry_time'),
-    userdata: [],
+    userdata: null,
     artist: null,
-    playliste: []
+    playliste: null
 };
 
 function Reducer (state = initialState, action) {
@@ -21,12 +21,12 @@ function Reducer (state = initialState, action) {
         case "SETUSER":
             return {
                 ...state,
-                Userdata: action.user
+                userdata: action.data
             };
         case "SETPLAYLISTE":
             return {
                 ...state,
-                playliste: action.playliste
+                playliste: action.play
             };
         case "SETTOP":
             return {

@@ -11,36 +11,45 @@ class Home extends Component {
 
     constructor() {
         super();
-        this.state = { 
-            data: [],
-            play: []
+        this.state = {
+            data: []
          };
       }
-    
+
+      send_user(user) {
+        const data = JSON.stringify(user);
+        this.props.dispatch({type: "SETUSER", data});
+      }
+
+      send_playliste(playlists) {
+        const play = JSON.stringify(playlists); // JSON -> string
+        this.props.dispatch({type: "SETPLAYLISTE", play});
+      }
+
     async componentDidMount() {
         s.setAccessToken(this.props.token);
 
         try {
             await s.getMe().then((user) => {
-                this.setState({ data: user });              
+                this.send_user(user)
             });
-            await s.getUserPlaylists().then((playlists) => {
-                this.setState({ play: playlists });
+            await s.getUserPlaylists().then((playliste) => {
+                    this.send_playliste(playliste);
                 });
+
+           this.setState({ data: JSON.parse(this.props.userdata)}); // string -> JSON
         } catch (error) {
           console.log(error);
         }
     }
-    
+
     render () {
         return (
         <>
             <Header/>
         <p>You are in the Home Component</p>
-        <p>Token = {this.props.token}</p>
-        <p>Time = {this.props.time}</p>
-        <p>Name = {this.props.time}</p>
-        <p>Name = {this.state.data.display_name}</p>
+        <p>Infos user en string = {this.props.userdata}</p>
+        <p>Nom user = {this.state.data.display_name}</p>
             <Footer />
         </>
     );
@@ -50,7 +59,8 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
     token: state.access_token,
     time: state.expiryTime,
-    userdata: state.userdata
+    userdata: state.userdata,
+    play: state.playliste
 });
 
 export default connect(mapStateToProps)(Home);
