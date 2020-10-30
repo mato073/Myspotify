@@ -2,8 +2,8 @@ const initialState = {
     access_token: localStorage.getItem('token'),
     expiryTime: localStorage.getItem('expiry_time'),
     userdata: localStorage.getItem('userdata'),
-    artist: localStorage.getItem('playliste'),
-    playliste: []
+    artist: null,
+    playliste: localStorage.getItem('playliste'),
 };
 
 function Reducer (state = initialState, action) {
