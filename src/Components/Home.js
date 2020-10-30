@@ -24,11 +24,6 @@ class Home extends Component {
         this.props.dispatch({type: "SETPLAYLISTE", play});
       }
 
-     componentDidMount() {
-       this.props.dispatch(set_user_data(this.props.token, "https://api.spotify.com/v1/me"));
-       this.props.dispatch(set_playliste_data(this.props.token, "https://api.spotify.com/v1/me/playlists"));
-    }
-
     render () {
         return (
         <>
