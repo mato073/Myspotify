@@ -4,8 +4,6 @@ import Footer from './Footer'
 import SideBar from './SideBar'
 import { connect } from 'react-redux';
 
-import {set_user_data, set_playliste_data} from '../actions/index'
-
 class Home extends Component {
 
     constructor() {

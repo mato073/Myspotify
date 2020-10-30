@@ -39,6 +39,15 @@ function Reducer(state = initialState, action) {
                 ...state,
                 page: action.page
             };
+        case "DESTROY_SESSION":
+            return {
+                ...state,
+                access_token: undefined,
+                userdata: undefined,
+                artist: undefined,
+                playliste: undefined,
+                expiryTime: undefined        
+            };
         default:
             return state;
     }

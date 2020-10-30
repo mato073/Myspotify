@@ -16,6 +16,13 @@ export function send_play(play) {
     }
 }
 
+export function send_page(page) {
+    return {
+        type: "SETPAGE",
+        page: page
+    }
+}
+
 export function set_user_data (token, url) {
 
   setAuthHeader(token);
@@ -46,4 +53,17 @@ export function  set_playliste_data (token, url) {
             console.log('error', error);
         }
     }
+  }
+
+  export function onLogout() {
+    return dispatch => {
+        console.log('user logout');
+        dispatch({ type: "DESTROY_SESSION" });
+     };
+  }
+
+  export function ser_page(page) {
+    return dispatch => {
+        dispatch(send_page(page));
+     };
   }

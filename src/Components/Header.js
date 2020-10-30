@@ -8,6 +8,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import logo from "../images/EpitechMySpotify.svg";
+import {onLogout} from "../actions/action"
+
+import history from '../services/history'
 
 class Header extends Component {
 
@@ -56,6 +59,14 @@ class Header extends Component {
         );
     }
     */
+    
+    logout = (event) => {
+        this.props.dispatch(onLogout());
+        localStorage.clear();
+        history.push('/login')
+        history.go()
+    }
+
 
     render() {
         return (
@@ -64,7 +75,7 @@ class Header extends Component {
                     <div style={{ maxHeight: '5vh', flexGrow: '1'}}>
                         <img src={logo} style={{ maxHeight: '5vh'}}></img>
                     </div>
-                    <Button color="inherit" style={{ float: 'right' }}>
+                    <Button onClick={this.logout} color="inherit" style={{ float: 'right' }}>
                         <ExitToAppIcon/>
                         <p> Log out</p>
                     </Button>

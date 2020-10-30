@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getParamValues } from '../services/urlmanage';
 import _ from 'lodash';
 
-import {set_user_data, set_playliste_data} from '../actions/index'
+import {set_user_data, set_playliste_data} from '../actions/action'
 
 
 class RedirectPage extends Component {
