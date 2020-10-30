@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const getParamValues = (url) => {
   return url
     .slice(1)
@@ -7,4 +9,16 @@ export const getParamValues = (url) => {
       prev[title] = value;
       return prev;
     }, {});
+};
+
+export const setAuthHeader = (token) => {
+  try {
+    if (token) {
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${token}`;
+    }
+  } catch (error) {
+    console.log('Error setting auth', error);
+  }
 };
