@@ -27,29 +27,15 @@ class Home extends Component {
       }
 
     async componentDidMount() {
-        s.setAccessToken(this.props.token);
 
-        try {
-            await s.getMe().then((user) => {
-                this.send_user(user)
-            });
-            await s.getUserPlaylists().then((playliste) => {
-                    this.send_playliste(playliste);
-                });
-
-           this.setState({ data: JSON.parse(this.props.userdata)}); // string -> JSON
-        } catch (error) {
-          console.log(error);
-        }
     }
 
     render () {
         return (
         <>
             <Header/>
-        <p>You are in the Home Component</p>
         <p>Infos user en string = {this.props.userdata}</p>
-        <p>Nom user = {this.state.data.display_name}</p>
+        <p>Infos playliste en string = {this.props.play}</p>
             <Footer />
         </>
     );

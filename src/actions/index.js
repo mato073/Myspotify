@@ -16,24 +16,24 @@ export function send_play(play) {
     }
 }
 
-export function  set_user_data (token, params, url) {
-    
+export function  set_user_data (token, url) {
+
   setAuthHeader(token);
 
   return(dispatch) => {
-        return axios.get(url, params).then((response)=> {
-            dispatch(send_user(response.data))
+        return axios.get(url).then((response)=> {
+            dispatch(send_user(JSON.stringify(response.data)))
         });
-  }  
+  }
 }
 
-export function  set_playliste_data (token, params, url) {
-    
+export function  set_playliste_data (token, url) {
+
     setAuthHeader(token);
-  
+
     return(dispatch) => {
-          return axios.get(url, params).then((response)=> {
-              dispatch(send_play(response.data))
+          return axios.get(url).then((response)=> {
+              dispatch(send_play(JSON.stringify(response.data)))
           });
-    }  
+    }
   }

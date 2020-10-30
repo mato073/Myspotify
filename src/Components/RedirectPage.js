@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from 'react-redux';
-import { getParamValues, setAuthHeader } from '../services/urlmanage';
-import * as actionCreators from '../actions/index'
+import { getParamValues } from '../services/urlmanage';
+import {set_user_data, set_playliste_data} from '../actions/index'
 import _ from 'lodash';
 
 class RedirectPage extends Component {
@@ -9,6 +9,8 @@ class RedirectPage extends Component {
     storeToken(token) {
         localStorage.setItem('token', token);
         this.props.dispatch({type: "SETTOKEN", token});
+        this.props.dispatch(set_user_data(token, "https://api.spotify.com/v1/me"));
+        this.props.dispatch(set_playliste_data(token, "https://api.spotify.com/v1/me/playlists"));
     }
     storeTime(expiryTime) {
         localStorage.setItem('expiry_time', expiryTime);
@@ -27,8 +29,6 @@ class RedirectPage extends Component {
 
           this.storeToken(token);
           this.storeTime(expiryTime);
-          this.props.set_user_data(token, 'https://api.spotify.com/v1/me');
-
           history.push('/home');
         } catch (error) {
           history.push('/');
@@ -38,9 +38,4 @@ class RedirectPage extends Component {
     return null;
     }
 }
-
-const mapStateToProps = (state) => {
-    return(state);
-};
-
-export default connect(actionCreators)(RedirectPage);
+export default connect()(RedirectPage);
