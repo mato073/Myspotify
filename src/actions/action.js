@@ -62,7 +62,7 @@ export function  set_playliste_data (token, url) {
      };
   }
 
-  export function ser_page(page) {
+  export function set_page(page) {
     return dispatch => {
         dispatch(send_page(page));
      };
