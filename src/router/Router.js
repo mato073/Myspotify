@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from '../Components/Login'
 import Home from '../Components/Home'
+import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 import RedirectPage from '../Components/RedirectPage'
 import App from '../App'
 
@@ -15,6 +17,8 @@ class AppRouter extends React.Component {
                         <Route path="/login" component={Login} />
                         <Route path="/redirect" component={RedirectPage} />
                         <Route path="/home" component={Home} />
+                        <Route component={Footer} />
+                        <Route component={Header} />
                     </Switch>
                 </div>
 

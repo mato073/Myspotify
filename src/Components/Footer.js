@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Home extends Component {
+class Footer extends Component {
     render () {
         return (
         <>
@@ -11,4 +11,4 @@ class Home extends Component {
 
 }
 
-export default Home;
+export default Footer;

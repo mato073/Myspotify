@@ -1,14 +1,32 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 
-class Home extends Component {
+class Header extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            userdata: []
+         };
+      }
+
+    componentDidMount() {
+        console.log(this.props);
+    }
+
     render () {
         return (
         <>
-            <p>You are in the Header Component</p>
+            <p>Header</p>
         </>
     );
     }
 
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+    token: state.access_token,
+    userdata: state.userdata
+});
+
+export default connect(mapStateToProps)(Header);
