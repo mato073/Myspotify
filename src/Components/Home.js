@@ -24,6 +24,10 @@ class Home extends Component {
         this.props.dispatch({type: "SETPLAYLISTE", play});
       }
 
+     componentDidMount() {
+      
+     }
+
     render () {
         return (
         <>
