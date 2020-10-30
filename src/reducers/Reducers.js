@@ -4,9 +4,10 @@ const initialState = {
     userdata: localStorage.getItem('userdata'),
     artist: null,
     playliste: localStorage.getItem('playliste'),
+    page: 'Home',
 };
 
-function Reducer (state = initialState, action) {
+function Reducer(state = initialState, action) {
     switch (action.type) {
         case "SETTOKEN":
             return {
@@ -32,6 +33,11 @@ function Reducer (state = initialState, action) {
             return {
                 ...state,
                 artist: action.artist
+            };
+        case "SETPAGE":
+            return {
+                ...state,
+                page: action.page
             };
         default:
             return state;
