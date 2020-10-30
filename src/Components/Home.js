@@ -3,9 +3,7 @@ import Header from './Header';
 import Footer from './Footer'
 import { connect } from 'react-redux';
 
-import SpotifyWebApi from "spotify-web-api-js";
-
-const s = new SpotifyWebApi();
+import {set_user_data, set_playliste_data} from '../actions/index'
 
 class Home extends Component {
 
@@ -26,8 +24,9 @@ class Home extends Component {
         this.props.dispatch({type: "SETPLAYLISTE", play});
       }
 
-    async componentDidMount() {
-
+     componentDidMount() {
+       this.props.dispatch(set_user_data(this.props.token, "https://api.spotify.com/v1/me"));
+       this.props.dispatch(set_playliste_data(this.props.token, "https://api.spotify.com/v1/me/playlists"));
     }
 
     render () {

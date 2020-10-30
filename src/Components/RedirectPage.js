@@ -9,8 +9,6 @@ class RedirectPage extends Component {
     storeToken(token) {
         localStorage.setItem('token', token);
         this.props.dispatch({type: "SETTOKEN", token});
-        this.props.dispatch(set_user_data(token, "https://api.spotify.com/v1/me"));
-        this.props.dispatch(set_playliste_data(token, "https://api.spotify.com/v1/me/playlists"));
     }
     storeTime(expiryTime) {
         localStorage.setItem('expiry_time', expiryTime);
