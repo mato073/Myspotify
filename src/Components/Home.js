@@ -13,20 +13,6 @@ class Home extends Component {
          };
       }
 
-      send_user(user) {
-        const data = JSON.stringify(user);
-        this.props.dispatch({type: "SETUSER", data});
-      }
-
-      send_playliste(playlists) {
-        const play = JSON.stringify(playlists); // JSON -> string
-        this.props.dispatch({type: "SETPLAYLISTE", play});
-      }
-
-     componentDidMount() {
-      
-     }
-
     render () {
         return (
         <>
