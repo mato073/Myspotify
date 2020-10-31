@@ -4,21 +4,34 @@ import {setAuthHeader} from '../services/urlmanage'
 
 export function send_user(user) {
     return {
-        type: "SETUSER",
+        type: "SET_USER",
         user: user
     }
 }
 
 export function send_play(play) {
     return {
-        type: "SETPLAYLISTE",
+        type: "SET_PLAYLISTE",
         play: play
     }
 }
 
+export function send_top_track(track) {
+    return {
+        type: "SET_TRACK",
+        track: track
+    }
+}
+
+export function send_top_artist(artist) {
+    return {
+        type: "SET_ARTIST",
+        artist: artist
+    }
+}
 export function send_page(page) {
     return {
-        type: "SETPAGE",
+        type: "SET_PAGE",
         page: page
     }
 }
@@ -35,6 +48,7 @@ export function set_user_data (token, url) {
         });
     } catch (error) {
         console.log('error', error);
+        return (undefined);
       }
   }
 }
@@ -46,16 +60,38 @@ export function  set_playliste_data (token, url) {
     return async (dispatch) => {
         try {
           return await axios.get(url).then((response)=> {
-            localStorage.setItem('playliste', JSON.stringify(response.data));
+              localStorage.setItem('playliste', JSON.stringify(response.data));
               dispatch(send_play(JSON.stringify(response.data)))
           });
         } catch (error) {
             console.log('error', error);
+            return (undefined);
         }
     }
   }
 
-  export function onLogout() {
+export function set_top_artist(token, type) {
+
+    setAuthHeader(token);
+    const url = `https://api.spotify.com/v1/me/top/${type}`
+
+      return async (dispatch) => {
+          try {
+              return await axios.get(url).then((response) => {
+                  if (type === 'artist')
+                    dispatch(send_top_artist(JSON.stringify(response.data)));
+                  if (type === 'track')
+                    dispatch(send_top_track(JSON.stringify(response.data)));
+              });
+          } catch (error) {
+            console.log('error', error);
+            return (undefined);
+         } 
+      }
+}
+
+
+export function onLogout() {
     return dispatch => {
         console.log('user logout');
         dispatch({ type: "DESTROY_SESSION" });
@@ -66,4 +102,4 @@ export function  set_playliste_data (token, url) {
     return dispatch => {
         dispatch(send_page(page));
      };
-  }
+}
