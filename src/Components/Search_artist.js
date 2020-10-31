@@ -1,6 +1,14 @@
-import { Button, CardContent, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
+
+import { Button, CardContent, makeStyles, TextField } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import DirectionsIcon from '@material-ui/icons/Directions';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -30,11 +38,18 @@ function Search_artist (props) {
 
     const classes = useStyles();
 
-    const get_artist = (event) => {
-        props.dispatch(search_artist(props.token, "eminem"));
+    const [value, setValue] = React.useState("");
+
+    const hand = (e) => {
+        setValue(e.target.value)
     }
 
-    function Test (props) {
+    const get_artist = (event) => {
+        const val = value.trim()
+        props.dispatch(search_artist(props.token, val));
+    }
+
+    function Card_liste(props) {
 
         console.log(props.items);
         var image = music;
@@ -61,14 +76,14 @@ function Search_artist (props) {
     function Liste (props) {
         var data = props.search;
         if (data.length === 0) {
-            return (<p>vide</p>);
+            return (<p>Rechercher un artist</p>);
         } else {
             return(
             <div  >
                 <h3>Liste artists</h3>
                     <div className="list_artist">
                         {data.artists.items.map((items, key) => 
-                        <Test items={items} key={key}/>   
+                        <Card_liste items={items} key={key}/>   
                     )}
                 </div>
              </div>
@@ -76,17 +91,12 @@ function Search_artist (props) {
     }
 }
 
-
-
-
-
-
-    React.useEffect(() => { 
-    });
-
     return (
         <div>
-            <Button onClick={get_artist}>recherch</Button>
+            <div>
+                <TextField onChange={hand}></TextField>
+                <Button onClick={get_artist} className="btn">Search</Button>
+            </div>
             <Liste search = {props.search}></Liste>
         </div>
     );
