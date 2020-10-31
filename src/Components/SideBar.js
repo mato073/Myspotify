@@ -7,10 +7,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { connect } from 'react-redux';
 
+
+import {set_page} from '../actions/action'
+
 class SideBar extends Component {
     handleClickMenu (page) {
         console.log(page, 'test');
-        this.props.dispatch({type: "SETPAGE", page});
+        this.props.dispatch(set_page(page));
     };
 
     render() {
