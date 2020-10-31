@@ -36,6 +36,13 @@ export function send_page(page) {
     }
 }
 
+export function send_search(search) {
+    return {
+        type: "SET_SEARCH",
+        search: search
+    }
+}
+
 export function set_user_data (token, url) {
 
   setAuthHeader(token);
@@ -89,6 +96,23 @@ export function set_top_artist(token, type) {
          } 
       }
 }
+
+export function search_artist(token, artist) {
+
+    setAuthHeader(token);
+    const url = `https://api.spotify.com/v1/search?q=${artist}&type=artist&market=US&limit=10&offset=5`
+    
+    return async (dispatch) => {
+        try {
+          return await axios.get(url).then((response)=> {
+              dispatch(send_search(JSON.stringify(response.data)))
+          });
+      } catch (error) {
+          console.log('error', error);
+          return (undefined);
+       }
+    }
+  }
 
 
 export function onLogout() {
