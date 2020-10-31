@@ -5,6 +5,7 @@ import Home from '../Components/Home'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
 import RedirectPage from '../Components/RedirectPage'
+import Search_artist from '../Components/Search_artist'
 import App from '../App'
 import SideBar from '../Components/SideBar';
 
@@ -21,6 +22,7 @@ class AppRouter extends React.Component {
                         <Route component={Footer} />
                         <Route component={SideBar} />
                         <Route component={Header} />
+                        <Route component={Search_artist} />
                     </Switch>
                 </div>
 

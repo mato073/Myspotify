@@ -105,7 +105,7 @@ export function search_artist(token, artist) {
     return async (dispatch) => {
         try {
           return await axios.get(url).then((response)=> {
-              dispatch(send_search(JSON.stringify(response.data)))
+              dispatch(send_search(response.data))
           });
       } catch (error) {
           console.log('error', error);

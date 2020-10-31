@@ -6,6 +6,7 @@ const initialState = {
     track: null,
     playliste: localStorage.getItem('playliste'),
     page: 'Home',
+    search: []
 };
 
 function Reducer(state = initialState, action) {
@@ -44,6 +45,11 @@ function Reducer(state = initialState, action) {
             return {
                 ...state,
                 page: action.page
+            };
+        case "SET_SEARCH":
+            return {
+                ...state,
+                search: action.search
             };
         case "DESTROY_SESSION":
             return {
