@@ -29,6 +29,15 @@ const useStyles = makeStyles({
   },
 });
 
+const scopes = [
+  "user-top-read",
+  "user-read-email",
+  "user-read-private",
+  "playlist-read-private",
+  "playlist-modify-public",
+  "playlist-read-private",
+  "playlist-modify-private"
+];
 const clientId = "bf5aba2f7f5b4efe956739f92460473d";
 const redirectUri = "http://localhost:3000/redirect";
 const authorizeUrl = "https://accounts.spotify.com/authorize"
@@ -38,7 +47,7 @@ const Login = (props) => {
 
 
   const handleLogin = () => {
-    window.location = `${authorizeUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true&scope=user-top-read`;
+    window.location = `${authorizeUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true&scope=${scopes.join("%20")}`;
   };
 
 
