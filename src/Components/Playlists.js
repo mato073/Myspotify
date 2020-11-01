@@ -51,7 +51,7 @@ function Playlists(props) {
 
     const new_playmist = (e) => {
         console.log('ici');
-        props.dispatch(create_playlist(props.token, data.id, 'test2', 'test2', true));
+        props.dispatch(create_playlist(props.token, data.id, 'play1', 'play2', true));
     }
 
     function Card_liste(props) {
@@ -88,11 +88,9 @@ function Playlists(props) {
                 <div style={{ width: '100%'}}>
                     <Typography gutterBottom variant="h3"  className={classes.title}>Playlists: </Typography>
                     <Box display='flex' flexDirection="row" flexDirection="row">
-                        <div >
                             {play.items.map((items, key) => 
                             <Card_liste  items={items} key={key}/>   
                         )}
-                    </div>
                     <Card className={classes.root}>
                         <CardContent>
                             <Typography variant="h4" aline='center'>
