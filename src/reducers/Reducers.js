@@ -2,8 +2,8 @@ const initialState = {
     access_token: localStorage.getItem('token'),
     expiryTime: localStorage.getItem('expiry_time'),
     userdata: localStorage.getItem('userdata'),
-    artist: null,
-    track: null,
+    artist: [],
+    track: [],
     playliste: localStorage.getItem('playliste'),
     page: 'Home',
     search: []
