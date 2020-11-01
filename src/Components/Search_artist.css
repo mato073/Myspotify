@@ -3,8 +3,16 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 40px;
+    text-align: center;
 }
 
 .artist_name {
     color: white;
+}
+
+.title {
+    text-align: center;
+}
+.box {
+    text-align: center;
 }

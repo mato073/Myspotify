@@ -29,6 +29,10 @@ const useStyles = makeStyles({
         marginRight: 20,
         marginTop:10,
     },
+    btn: {
+        backgroundColor: 'green',
+        color: 'white'
+    }
 });
 
 
@@ -74,11 +78,11 @@ function Search_artist(props) {
     function Liste(props) {
         var data = props.search;
         if (data.length === 0) {
-            return (<p>Rechercher un artist</p>);
+            return (<p></p>);
         } else {
             return (
                     <div style={{ width: '100%' }}>
-                    <h3 >Liste artists</h3>
+                        <h3 className="title">Liste artists</h3>
                     <div className="list_artist">
                         {data.artists.items.map((items, key) =>
                             <CardListe items={items} key={key} />
@@ -91,12 +95,14 @@ function Search_artist(props) {
 
     return (
         <div>
-            <div>
-                <TextField onChange={hand}></TextField>
-                <Button onClick={get_artist} className="btn">Search</Button>
+            <div style={{ width: '100%' }}>
+                <div className="box">
+                    <TextField  fullWidth onChange={hand} id="outlined-full-width" label="search" style={{ margin: 8 }}  margin="normal"variant="outlined"/>
+                    <Button className={classes.btn} onClick={get_artist}>Search</Button>
+                </div>
             </div>
-            <Liste search={props.search}></Liste>
-        </div>
+                 <Liste search={props.search}></Liste>
+            </div>
     );
 }
 
