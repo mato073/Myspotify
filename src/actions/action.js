@@ -77,6 +77,21 @@ export function  set_playliste_data (token, url) {
     }
   }
 
+export function create_playlist(token, user_id, name, des, bool) {
+    setAuthHeader(token);
+    url = `https://api.spotify.com/v1/users/${user_id}/playlists`
+
+    return async (dispatch) => {
+        try {
+            axios.post(url, {name: name, description: des, public: bool});
+            return (set_playliste_data(token, "https://api.spotify.com/v1/me/playlists"));
+        } catch (error) {
+            console.log('error', error);
+            return (undefined);
+        }
+    }
+}
+
 export function set_top_artist(token, type) {
 
     setAuthHeader(token);
