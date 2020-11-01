@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 class Profile extends Component {
     user = JSON.parse(this.props.userdata);
@@ -11,6 +12,9 @@ class Profile extends Component {
         return (
             <Card style={{maxWidth: '50vh'}}>
                 <CardContent>
+                    {this.user.images.length
+                    && <img src={this.user.images[0].url} style={{ maxWidth: '50%', borderRadius: '10%' }} alt="Profile Picture" />
+                    || <AccountCircle style={{ fontSize: 200 }}/>}
                     <Typography color="textSecondary" gutterBottom>
                         User Name
                         </Typography>
