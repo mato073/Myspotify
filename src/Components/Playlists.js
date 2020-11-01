@@ -3,20 +3,11 @@ import { connect } from 'react-redux';
 import music from '../images/music.jpeg';
 
 import { Button, CardContent, makeStyles, TextField } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {set_playliste_data, create_playlist, set_top_artist} from '../actions/action'
+import {set_playliste_data, create_playlist} from '../actions/action'
 
 const useStyles = makeStyles({
     root: {
@@ -60,8 +51,7 @@ function Playlists(props) {
 
     const new_playmist = (e) => {
         console.log('ici');
-        props.dispatch(set_top_artist(props.token, "tracks"));
-        //props.dispatch(create_playlist(props.token, data.id, 'test2', 'test2', true));
+        props.dispatch(create_playlist(props.token, data.id, 'test2', 'test2', true));
     }
 
     function Card_liste(props) {
@@ -108,8 +98,8 @@ function Playlists(props) {
                             <Typography variant="h4" aline='center'>
                                 Crée une playlist
                             </Typography>
-                            <TextField ></TextField>
-                            <TextField ></TextField>
+                            <TextField placeholder="name" ></TextField>
+                            <TextField placeholder="description"></TextField>
                             <br/>
                             <Button onClick={new_playmist}>Cree</Button>
                         </CardContent>
