@@ -14,7 +14,7 @@ const useStyles = makeStyles({
       maxWidth: 400,
       height: 450,
       width: 320,
-      backgroundColor: "#5d5c5c",
+      backgroundColor: "#36393f",
       marginLeft: 10,
       marginRight: 10,
       marginTop:10,
@@ -33,12 +33,12 @@ const useStyles = makeStyles({
     },
     btn: {
         color: 'white',
-        backgroundColor: 'green'
+        backgroundColor: '#006ab3'
     },
     btn2: {
         color: 'white',
         marginTop: 10,
-        backgroundColor: 'green'
+        backgroundColor: '#006ab3'
     }
   });
 

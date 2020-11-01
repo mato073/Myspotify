@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
+        backgroundColor: '#121212',
     },
     drawer: {
         width: drawerWidth,
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         width: drawerWidth,
+        backgroundColor: '#202225',
     },
     drawerContainer: {
         overflow: 'auto',
@@ -59,7 +61,7 @@ function Header(props) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" className={classes.appBar} style={{ backgroundColor: 'black', zIndex: 4200 }}>
+            <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar variant="dense">
                     <div style={{ maxHeight: '5vh', flexGrow: '1' }}>
                         <img src={logo} style={{ maxHeight: '5vh' }} alt="MySpotify's logo"></img>
@@ -80,7 +82,7 @@ function Header(props) {
                     <List>
                         {['Home', 'Top Tracks', 'Playlist', 'Research'].map((text, index) => (
                             <ListItem button key={text} onClick={() => handleClickMenu(text)}>
-                                <ListItemText primary={text} />
+                                <ListItemText style={{color: '#b9bbbe'}} primary={text} />
                             </ListItem>
                         ))}
                     </List>
@@ -88,7 +90,7 @@ function Header(props) {
                     <List>
                         {['Profile'].map((text, index) => (
                             <ListItem button key={text} onClick={() => handleClickMenu(text)}>
-                                <ListItemText primary={text} />
+                                <ListItemText style={{color: '#b9bbbe'}} primary={text} />
                             </ListItem>
                         ))}
                     </List>

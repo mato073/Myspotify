@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         width: '100%',
+        backgroundColor: '#36393f',
     },
     details: {
         display: 'flex',
@@ -81,7 +82,7 @@ function TopTracks(props) {
 
     return (
         <div>
-            { props.track && props.track.total && <TrackList /> || <p>You dont have any top tracks</p>}
+            { props.track && props.track.total && <TrackList /> || <p style={{color: '#b9bbbe'}}>You dont have any top tracks</p>}
         </div>
     );
 }

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
         height: 450,
         width: 320,
         maxWidth: 345,
-        backgroundColor: "#5d5c5c",
+        backgroundColor: "#36393f",
         marginLeft: 30,
         marginRight: 30,
         marginTop: 30,
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
         marginTop:10,
     },
     btn: {
-        backgroundColor: 'green',
+        backgroundColor: '#006ab3',
         color: 'white'
     }
 });
@@ -96,7 +96,7 @@ function Search_artist(props) {
         <div>
             <div style={{ width: '100%' }}>
                 <div className="box">
-                    <TextField  fullWidth onChange={hand} id="outlined-full-width" label="search" style={{ margin: 8 }}  margin="normal"variant="outlined"/>
+                    <TextField  fullWidth onChange={hand} id="outlined-full-width" label="search"  margin="normal"variant="outlined"/>
                     <Button className={classes.btn} onClick={get_artist}>Search</Button>
                 </div>
             </div>
