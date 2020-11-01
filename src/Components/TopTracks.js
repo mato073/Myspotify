@@ -13,6 +13,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        width: '100%',
     },
     details: {
         display: 'flex',
@@ -50,11 +51,16 @@ function TopTracks(props) {
 
             <Grid container direction="column" justify="flex-start" alignItems="center">
                 {props.track.items.map((items, key) =>
-                    <Card className={classes.root}>
+                    <Card className={classes.root} flexGrow={1}>
+                        <CardMedia
+                            className={classes.cover}
+                            image={items.album.images[0].url}
+                            title="Live from space album cover"
+                        />
                         <div className={classes.details}>
                             <CardContent className={classes.content}>
                                 <Typography component="h5" variant="h5">
-                                    {items.name}
+                                    #{key + 1} - {items.name}
                                 </Typography>
                                 <Typography variant="subtitle1" color="textSecondary">
                                     {items.artists[0].name}
@@ -66,11 +72,6 @@ function TopTracks(props) {
                                 </IconButton>
                             </div>
                         </div>
-                        <CardMedia
-                            className={classes.cover}
-                            image={items.album.images[0].url}
-                            title="Live from space album cover"
-                        />
                     </Card>
                 )}
             </Grid>
