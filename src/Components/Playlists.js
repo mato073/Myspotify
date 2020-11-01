@@ -16,7 +16,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {set_playliste_data} from '../actions/action'
+import {set_playliste_data, create_playlist, set_top_artist} from '../actions/action'
 
 const useStyles = makeStyles({
     root: {
@@ -58,9 +58,14 @@ function Playlists(props) {
         SetName(e.target.value)
     }
 
+    const new_playmist = (e) => {
+        console.log('ici');
+        props.dispatch(set_top_artist(props.token, "tracks"));
+        //props.dispatch(create_playlist(props.token, data.id, 'test2', 'test2', true));
+    }
+
     function Card_liste(props) {
 
-        console.log(props.items);
         var image = music;
         try {
             image = props.items.images[0].url;
@@ -87,7 +92,7 @@ function Playlists(props) {
 
     function Liste() {
         if (play === null) {
-            return (<p>Vous n'avais pas de playliste</p>);
+            return (<p>You dont have any playlists</p>);
         } else {
             return(
                 <div style={{ width: '100%'}}>
@@ -95,7 +100,7 @@ function Playlists(props) {
                     <Box display='flex' flexDirection="row" flexDirection="row">
                         <div >
                             {play.items.map((items, key) => 
-                            <Card_liste items={items} key={key}/>   
+                            <Card_liste  items={items} key={key}/>   
                         )}
                     </div>
                     <Card className={classes.root}>
@@ -103,7 +108,10 @@ function Playlists(props) {
                             <Typography variant="h4" aline='center'>
                                 Crée une playlist
                             </Typography>
-
+                            <TextField ></TextField>
+                            <TextField ></TextField>
+                            <br/>
+                            <Button onClick={new_playmist}>Cree</Button>
                         </CardContent>
                     </Card>
                     </Box>
