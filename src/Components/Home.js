@@ -20,7 +20,7 @@ class Home extends Component {
         return (
             <>
                 <Menu />
-                <div style={{ marginTop: '10vh', marginLeft: '15vh' }}>
+                <div style={{ marginTop: '10vh', marginLeft: '240px', padding: '10px'}}>
                     {this.props.page === 'Home' &&
                         <div style={{ textAlign: 'center' }}>
                             <img src={logo} style={{ maxHeight: '10vh' }} alt="MySpotify's logo" />

@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -14,56 +15,87 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { set_page } from '../actions/action'
 import history from '../services/history'
 
-class Header extends Component {
-    handleClickMenu(page) {
-        console.log(page, 'test');
-        this.props.dispatch(set_page(page));
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+    },
+    drawerContainer: {
+        overflow: 'auto',
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+    },
+}));
+
+function Header(props) {
+
+    const classes = useStyles();
+
+    function handleClickMenu(page) {
+        props.dispatch(set_page(page));
     };
 
-    logout = (event) => {
-        this.props.dispatch(onLogout());
+    const logout = (event) => {
+        props.dispatch(onLogout());
         localStorage.clear();
         history.push('/login')
         history.go()
-    }
+    };
 
-    render() {
-        return (
-            <>
-                <AppBar position="absolute" style={{ backgroundColor: 'black', zIndex: 4200 }}>
-                    <Toolbar variant="dense">
-                        <div style={{ maxHeight: '5vh', flexGrow: '1'}}>
-                            <img src={logo} style={{ maxHeight: '5vh' }} alt="MySpotify's logo"></img>
-                        </div>
-                        <Button onClick={this.logout} color="inherit" style={{ float: 'right' }}>
-                            <ExitToAppIcon />
-                            <p> Log out</p>
-                        </Button>
-                    </Toolbar>
-                </AppBar >
-                <Drawer variant="permanent">
-                    <Toolbar />
-                    <div>
-                        <List>
-                            {['Home', 'Top Tracks', 'Playlist', 'Research'].map((text, index) => (
-                                <ListItem button key={text} onClick={() => this.handleClickMenu(text)}>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
-                        </List>
-                        <Divider />
-                        <List>
-                            {['Profile'].map((text, index) => (
-                                <ListItem button key={text} onClick={() => this.handleClickMenu(text)}>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
-                        </List>
+
+    return (
+        <div className={classes.root}>
+            <AppBar position="fixed" className={classes.appBar} style={{ backgroundColor: 'black', zIndex: 4200 }}>
+                <Toolbar variant="dense">
+                    <div style={{ maxHeight: '5vh', flexGrow: '1' }}>
+                        <img src={logo} style={{ maxHeight: '5vh' }} alt="MySpotify's logo"></img>
                     </div>
-                </Drawer>
-            </>
-        );
-    }
+                    <Button onClick={logout} color="inherit" style={{ float: 'right' }}>
+                        <ExitToAppIcon />
+                        <p> Log out</p>
+                    </Button>
+                </Toolbar>
+            </AppBar >
+            <Drawer className={classes.drawer}
+                variant="permanent"
+                classes={{
+                    paper: classes.drawerPaper,
+                }}>
+                <Toolbar />
+                <div className={classes.drawerContainer}>
+                    <List>
+                        {['Home', 'Top Tracks', 'Playlist', 'Research'].map((text, index) => (
+                            <ListItem button key={text} onClick={() => handleClickMenu(text)}>
+                                <ListItemText primary={text} />
+                            </ListItem>
+                        ))}
+                    </List>
+                    <Divider />
+                    <List>
+                        {['Profile'].map((text, index) => (
+                            <ListItem button key={text} onClick={() => handleClickMenu(text)}>
+                                <ListItemText primary={text} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </div>
+            </Drawer>
+        </div>
+    );
 
 }
 
