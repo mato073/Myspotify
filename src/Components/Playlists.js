@@ -8,7 +8,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {set_playliste_data, create_playlist} from '../actions/action'
-import history from '../services/history'
 
 const useStyles = makeStyles({
     root: {
@@ -102,14 +101,14 @@ function Playlists(props) {
                 <div style={{ width: '100%'}}>
                     <Typography gutterBottom variant="h3"  className={classes.title}>Playlists: </Typography>
                     <Button className={classes.btn} onClick={refrech}>Refresh</Button>
-                    <Box display='flex' flexDirection="row" flexDirection="row">
+                    <Box display='flex'lexWrap="nowrap" flexDirection="row">
                             {play.items.map((items, key) => 
                             <Card_liste  items={items} key={key}/>   
                         )}
                     <Card className={classes.root}>
                         <CardContent>
                             <Typography variant="h4" aline='center'>
-                                Crée une playlist
+                                Create a playlist
                             </Typography>
                             <TextField  placeholder='name' onChange={infos_name}></TextField>
                             <TextField  placeholder='description' onChange={infos_des}></TextField>
