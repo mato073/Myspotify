@@ -13,7 +13,7 @@ class Profile extends Component {
             <Card style={{maxWidth: '50vh'}}>
                 <CardContent>
                     {this.user.images.length
-                    && <img src={this.user.images[0].url} style={{ maxWidth: '50%', borderRadius: '10%' }} alt="Profile Picture" />
+                    && <img src={this.user.images[0].url} style={{ maxWidth: '50%', borderRadius: '10%' }} alt="Profile" />
                     || <AccountCircle style={{ fontSize: 200 }}/>}
                     <Typography color="textSecondary" gutterBottom>
                         User Name

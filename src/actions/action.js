@@ -100,9 +100,9 @@ export function set_top_artist(token, type) {
       return async (dispatch) => {
           try {
               return await axios.get(url).then((response) => {
-                  if (type === 'artist')
+                  if (type === 'artists')
                     dispatch(send_top_artist(response.data));
-                  if (type === 'track')
+                  if (type === 'tracks')
                     dispatch(send_top_track(response.data));
               });
           } catch (error) {
