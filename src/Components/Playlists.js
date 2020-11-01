@@ -29,7 +29,11 @@ const useStyles = makeStyles({
     },
     title: {
         align: 'center',
-        color: 'red',
+        color: 'black',
+    },
+    btn: {
+        color: 'white',
+        backgroundColor: 'green'
     }
   });
 
@@ -51,7 +55,11 @@ function Playlists(props) {
 
     const new_playmist = (e) => {
         console.log('ici');
-        props.dispatch(create_playlist(props.token, data.id, 'play1', 'play2', true));
+        props.dispatch(create_playlist(props.token, data.id, 'play4', 'play3', true));
+    }
+
+    const refrech = (e) => {
+        props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists"));
     }
 
     function Card_liste(props) {
@@ -87,6 +95,7 @@ function Playlists(props) {
             return(
                 <div style={{ width: '100%'}}>
                     <Typography gutterBottom variant="h3"  className={classes.title}>Playlists: </Typography>
+                    <Button className={classes.btn} onClick={refrech}>Refresh</Button>
                     <Box display='flex' flexDirection="row" flexDirection="row">
                             {play.items.map((items, key) => 
                             <Card_liste  items={items} key={key}/>   
