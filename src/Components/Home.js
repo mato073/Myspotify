@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Menu from './Menu';
 import SearchArtist from './Search_artist';
-import Artist from './Artist';
+import TopTracks from './TopTracks';
 import Playlists from './Playlists'
 import Profile from './Profile';
 import logo from "../images/EpitechMySpotify.svg";
@@ -30,7 +30,7 @@ class Home extends Component {
                             <p>Infos artist en string = {this.props.artist}</p>
                         </div>
                     }
-                    {this.props.page === 'Artist' && <Artist />}
+                    {this.props.page === 'Top Tracks' && <TopTracks />}
                     {this.props.page === 'Research' && <SearchArtist />}
                     {this.props.page === 'Profile' && <Profile />}
                     {this.props.page === 'Playlist' && <Playlists />}

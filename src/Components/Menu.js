@@ -45,7 +45,7 @@ class Header extends Component {
                     <Toolbar />
                     <div>
                         <List>
-                            {['Home', 'Artist', 'Playlist', 'Research'].map((text, index) => (
+                            {['Home', 'Top Tracks', 'Playlist', 'Research'].map((text, index) => (
                                 <ListItem button key={text} onClick={() => this.handleClickMenu(text)}>
                                     <ListItemText primary={text} />
                                 </ListItem>

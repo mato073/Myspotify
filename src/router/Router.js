@@ -6,7 +6,7 @@ import Menu from '../Components/Menu'
 import Footer from '../Components/Footer'
 import RedirectPage from '../Components/RedirectPage'
 import Search_artist from '../Components/Search_artist'
-import Artist from '../Components/Artist'
+import TopTracks from '../Components/TopTracks'
 import App from '../App'
 
 class AppRouter extends React.Component {
@@ -22,7 +22,7 @@ class AppRouter extends React.Component {
                         <Route component={Footer} />
                         <Route component={Menu} />
                         <Route component={Search_artist} />
-                        <Route component={Artist} />
+                        <Route component={TopTracks} />
                     </Switch>
                 </div>
 
