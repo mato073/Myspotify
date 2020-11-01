@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {set_playliste_data, create_playlist} from '../actions/action'
+import history from '../services/history'
 
 const useStyles = makeStyles({
     root: {
@@ -45,23 +46,8 @@ const useStyles = makeStyles({
 function Playlists(props) {
 
     const classes = useStyles();
-    const [play, setPlay] = React.useState(JSON.parse(props.play));
-    const [data, setData] = React.useState(JSON.parse(props.user));
-    const [name, SetName] = React.useState("");
-    const [das, SetDes] = React.useState("");
-
-    const handes = (e) => {
-        SetDes(e.target.value)
-    }
-
-    const handname = (e) => {
-        SetName(e.target.value)
-    }
-
-    const new_playmist = (e) => {
-        console.log('ici');
-        props.dispatch(create_playlist(props.token, data.id, 'play4', 'play3', true));
-    }
+    const [play] = React.useState(JSON.parse(props.play));
+    const [data] = React.useState(JSON.parse(props.user));
 
     const refrech = (e) => {
         props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists"));
@@ -93,7 +79,22 @@ function Playlists(props) {
         );
     }
 
-    function Liste() {
+    function Liste(props) {
+        const [name, setName] = React.useState('');
+        const [des, setDes] = React.useState('');
+ 
+        const infos_name = (e) =>{
+            setName(e.target.value);
+        }
+
+        const infos_des = (e) => {
+            setDes(e.target.value);
+        }
+
+        const new_playlist = (e) => {
+            props.dispatch(create_playlist(props.token, data.id, name, des, true));
+        }
+        
         if (play === null) {
             return (<p>You dont have any playlists</p>);
         } else {
@@ -110,10 +111,10 @@ function Playlists(props) {
                             <Typography variant="h4" aline='center'>
                                 Crée une playlist
                             </Typography>
-                            <TextField placeholder="name" ></TextField>
-                            <TextField placeholder="description"></TextField>
+                            <TextField  placeholder='name' onChange={infos_name}></TextField>
+                            <TextField  placeholder='description' onChange={infos_des}></TextField>
                             <br/>
-                            <Button  className={classes.btn2} onClick={new_playmist}>Cree</Button>
+                            <Button  className={classes.btn2} onClick={new_playlist}>Create</Button>
                         </CardContent>
                     </Card>
                     </Box>
@@ -122,13 +123,9 @@ function Playlists(props) {
         }
     }
 
-    React.useEffect(() => {
-        props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists"));
-    });
-
     return (
     <div>
-        <Liste></Liste>
+        <Liste dispatch={props.dispatch}></Liste>
     </div>
     );
 
@@ -137,7 +134,8 @@ function Playlists(props) {
 const mapStateToProps = (state) => ({
     token: state.access_token,
     user: state.userdata,
-    play: state.playliste
+    play: state.playliste,
+    page: state.page
 });
 
 export default connect(mapStateToProps)(Playlists);
