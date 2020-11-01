@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Menu from './Menu';
 import SearchArtist from './Search_artist';
+import Playlists from './Playlists'
 import Profile from './Profile';
 import logo from "../images/EpitechMySpotify.svg";
 import { connect } from 'react-redux';
@@ -30,6 +31,7 @@ class Home extends Component {
                     }
                     {this.props.page === 'Research' && <SearchArtist />}
                     {this.props.page === 'Profile' && <Profile />}
+                    {this.props.page === 'Playlist' && <Playlists />}
                 </div>
             </>
         );
