@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getParamValues } from '../services/urlmanage';
 import _ from 'lodash';
 
-import {set_user_data} from '../actions/action'
+import {set_user_data, set_playliste_data} from '../actions/action'
 
 
 class RedirectPage extends Component {
@@ -12,6 +12,7 @@ class RedirectPage extends Component {
         localStorage.setItem('token', token);
         this.props.dispatch({type: "SET_TOKEN", token});
         this.props.dispatch(set_user_data(token, "https://api.spotify.com/v1/me"));
+        this.props.dispatch(set_playliste_data(token, "https://api.spotify.com/v1/me/playlists"));
     }
     storeTime(expiryTime) {
         localStorage.setItem('expiry_time', expiryTime);
