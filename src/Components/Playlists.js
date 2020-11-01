@@ -49,10 +49,10 @@ function Playlists(props) {
     const [data] = React.useState(JSON.parse(props.user));
 
     const refrech = (e) => {
-        props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists"));
+        props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists")); 
     }
 
-    function Card_liste(props) {
+    function Cardliste(props) {
 
         var image = music;
         try {
@@ -103,7 +103,7 @@ function Playlists(props) {
                     <Button className={classes.btn} onClick={refrech}>Refresh</Button>
                     <Box display='flex'lexWrap="nowrap" flexDirection="row">
                             {play.items.map((items, key) => 
-                            <Card_liste  items={items} key={key}/>   
+                            <Cardliste  items={items} key={key}/>   
                         )}
                     <Card className={classes.root}>
                         <CardContent>

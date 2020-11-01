@@ -5,7 +5,7 @@ import Home from '../Components/Home'
 import Menu from '../Components/Menu'
 import Footer from '../Components/Footer'
 import RedirectPage from '../Components/RedirectPage'
-import Search_artist from '../Components/Search_artist'
+import Searchartist from '../Components/Searchartist'
 import TopTracks from '../Components/TopTracks'
 import App from '../App'
 
@@ -21,7 +21,7 @@ class AppRouter extends React.Component {
                         <Route path="/home" component={Home} />
                         <Route component={Footer} />
                         <Route component={Menu} />
-                        <Route component={Search_artist} />
+                        <Route component={Searchartist} />
                         <Route component={TopTracks} />
                     </Switch>
                 </div>

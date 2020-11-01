@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Menu from './Menu';
-import SearchArtist from './Search_artist';
+import SearchArtist from './Searchartist';
 import TopTracks from './TopTracks';
 import Playlists from './Playlists'
 import Profile from './Profile';

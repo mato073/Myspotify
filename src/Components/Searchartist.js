@@ -8,8 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { search_artist } from '../actions/action'
 import music from '../images/music.jpeg';
-import './Search_artist.css'
-import Box from '@material-ui/core/Box';
+import './Searchartist.css'
 
 const useStyles = makeStyles({
     root: {
