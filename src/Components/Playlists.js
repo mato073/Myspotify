@@ -34,6 +34,11 @@ const useStyles = makeStyles({
     btn: {
         color: 'white',
         backgroundColor: 'green'
+    },
+    btn2: {
+        color: 'white',
+        marginTop: 10,
+        backgroundColor: 'green'
     }
   });
 
@@ -108,7 +113,7 @@ function Playlists(props) {
                             <TextField placeholder="name" ></TextField>
                             <TextField placeholder="description"></TextField>
                             <br/>
-                            <Button onClick={new_playmist}>Cree</Button>
+                            <Button  className={classes.btn2} onClick={new_playmist}>Cree</Button>
                         </CardContent>
                     </Card>
                     </Box>
