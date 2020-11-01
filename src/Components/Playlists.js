@@ -15,19 +15,25 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
     root: {
       maxWidth: 400,
+      height: 450,
+      width: 320,
       backgroundColor: "#5d5c5c",
-      marginLeft: 30,
-      marginRight: 30,
-      marginTop:30,
+      marginLeft: 10,
+      marginRight: 10,
+      marginTop:10,
     },
     media: {
       height: 300,
       width: 300,
-      color: 'wite'
+      color: 'wite',
+      marginLeft: 10,
+      marginRight: 20,
+      marginTop:10,
     },
     title: {
         align: 'center',
@@ -39,6 +45,17 @@ function Playlists(props) {
 
     const classes = useStyles();
     const [play, setPlay] = React.useState(JSON.parse(props.play));
+    const [data, setData] = React.useState(JSON.parse(props.user));
+    const [name, SetName] = React.useState("");
+    const [das, SetDes] = React.useState("");
+
+    const handes = (e) => {
+        SetDes(e.target.value)
+    }
+
+    const handname = (e) => {
+        SetName(e.target.value)
+    }
 
     function Card_liste(props) {
 
@@ -68,17 +85,27 @@ function Playlists(props) {
     }
 
     function Liste() {
-        if (play.length === 0) {
+        if (play === null) {
             return (<p>Vous n'avais pas de playliste</p>);
         } else {
             return(
-                <div>
+                <div style={{ width: '100%'}}>
                     <Typography gutterBottom variant="h3"  className={classes.title}>Playlists: </Typography>
-                    <div className="list_artist">
-                        {play.items.map((items, key) => 
-                        <Card_liste items={items} key={key}/>   
-                    )}
+                    <Box display='flex' flexDirection="row" flexDirection="row">
+                        <div >
+                            {play.items.map((items, key) => 
+                            <Card_liste items={items} key={key}/>   
+                        )}
                     </div>
+                    <Card className={classes.root}>
+                        <CardContent>
+                            <Typography variant="h4" aline='center'>
+                                Crée une playlist
+                            </Typography>
+
+                        </CardContent>
+                    </Card>
+                    </Box>
                 </div>
             );
         }
@@ -98,6 +125,7 @@ function Playlists(props) {
 
 const mapStateToProps = (state) => ({
     token: state.access_token,
+    user: state.userdata,
     play: state.playliste
 });
 
