@@ -2,12 +2,11 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from '../Components/Login'
 import Home from '../Components/Home'
-import Header from '../Components/Header'
+import Menu from '../Components/Menu'
 import Footer from '../Components/Footer'
 import RedirectPage from '../Components/RedirectPage'
 import Search_artist from '../Components/Search_artist'
 import App from '../App'
-import SideBar from '../Components/SideBar';
 
 class AppRouter extends React.Component {
     render () {
@@ -20,8 +19,7 @@ class AppRouter extends React.Component {
                         <Route path="/redirect" component={RedirectPage} />
                         <Route path="/home" component={Home} />
                         <Route component={Footer} />
-                        <Route component={SideBar} />
-                        <Route component={Header} />
+                        <Route component={Menu} />
                         <Route component={Search_artist} />
                     </Switch>
                 </div>

@@ -44,7 +44,7 @@ const Login = (props) => {
     <Container fixed className={classes.loginBox}>
       <Grid container direction="column" justify="center" alignItems="center" className={classes.loginGrid}>
         <Grid item className={classes.imageGrid}>
-          <img src={logo} className={classes.logo}></img>
+          <img src={logo} className={classes.logo} alt="MySpotify's logo"></img>
         </Grid>
         <Grid item>
           <Button onClick={handleLogin} variant="contained" color="primary" type="submit">Login to spotify</Button>

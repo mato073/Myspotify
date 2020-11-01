@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Header from './Header';
-import Footer from './Footer'
-import SideBar from './SideBar'
+import Menu from './Menu';
+import Footer from './Footer';
+import SearchArtist from './Search_artist';
 import { connect } from 'react-redux';
 
 class Home extends Component {
@@ -10,20 +10,26 @@ class Home extends Component {
         super();
         this.state = {
             data: []
-         };
-      }
+        };
+    }
 
-    render () {
+    render() {
         return (
-        <>
-            <Header/>
-            <SideBar/>
-        <p>Infos user en string = {this.props.userdata}</p>
-        <p>Infos playliste en string = {this.props.play}</p>
-        <p>Infos page en string = {this.props.page}</p>
-            <Footer />
-        </>
-    );
+            <>
+                <Menu />
+                <div style={{ marginTop: '10vh', marginLeft: '15vh' }}>
+                    {this.props.page === 'Home' &&
+                    <>
+                    <p>Infos user en string = {this.props.userdata}</p>
+                    <p>Infos playliste en string = {this.props.play}</p>
+                    <p>Infos page en string = {this.props.page}</p>
+                    </>
+                    }
+                    {this.props.page === 'Research' && <SearchArtist/> }
+                </div>
+                <Footer />
+            </>
+        );
     }
 }
 
