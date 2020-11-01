@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import Login from './Components/Login'
 import './App.css';
+import background from './images/background.jpg'
 
 
 class App extends Component {
   render () {
   return (
-    <Login/>
+    <div className="App">
+      <Login/>
+    </div>
   );
 }
 }

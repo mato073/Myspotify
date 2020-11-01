@@ -5,13 +5,15 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import React from "react";
 import logo from "../images/EpitechMySpotify.svg";
+import './Login.css'
 
 const useStyles = makeStyles({
   loginBox: {
-    backgroundColor: '#272c34',
-    height: '75vh',
-    borderRadius: 5,
-    marginTop: '12.5vh',
+    backgroundColor: 'white',
+    height:'40vh',
+    width:'40vh',
+    borderRadius: 15,
+    marginTop: '14.5vh',
   },
   logo: {
     width: '100%',
@@ -41,6 +43,7 @@ const Login = (props) => {
 
 
   return (
+    <div className="Login">
     <Container fixed className={classes.loginBox}>
       <Grid container direction="column" justify="center" alignItems="center" className={classes.loginGrid}>
         <Grid item className={classes.imageGrid}>
@@ -51,6 +54,7 @@ const Login = (props) => {
         </Grid>
       </Grid>
     </Container>
+    </div>
   );
 };
 
