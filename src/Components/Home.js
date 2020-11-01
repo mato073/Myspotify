@@ -20,14 +20,11 @@ class Home extends Component {
         return (
             <>
                 <Menu />
-                <div style={{ marginTop: '10vh', marginLeft: '240px', padding: '10px'}}>
+                <div style={{ marginTop: '7.5vh', marginLeft: '30vh', padding: '20px'}}>
                     {this.props.page === 'Home' &&
                         <div style={{ textAlign: 'center' }}>
                             <img src={logo} style={{ maxHeight: '10vh' }} alt="MySpotify's logo" />
                             <p>Welcome to MySpotify an Epitech project</p>
-                            <p>Infos user en string = {this.props.userdata}</p>
-                            <p>Infos page en string = {this.props.page}</p>
-                            <p>Infos artist en string = {this.props.artist}</p>
                         </div>
                     }
                     {this.props.page === 'Top Tracks' && <TopTracks />}

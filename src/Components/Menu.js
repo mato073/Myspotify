@@ -16,7 +16,7 @@ import { set_page } from '../actions/action'
 import history from '../services/history'
 
 
-const drawerWidth = 240;
+const drawerWidth = '30vh';
 
 const useStyles = makeStyles((theme) => ({
     root: {
