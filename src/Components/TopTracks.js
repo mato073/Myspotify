@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Button } from '@material-ui/core';
 import { set_top_artist } from '../actions/action'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -39,47 +38,42 @@ const useStyles = makeStyles((theme) => ({
 
 function TopTracks(props) {
 
-    const classes = useStyles();
+    useEffect(() => {
+        if (!props.track || props.track.length === 0)
+            props.dispatch(set_top_artist(props.token, 'tracks'));
+    }, []);
 
-    const get_track = (event) => {
-        props.dispatch(set_top_artist(props.token, 'tracks'));
-    }
+    const classes = useStyles();
 
     function TrackList() {
         return (
 
-            <div >
+            <Grid container direction="column" justify="flex-start" alignItems="center">
                 {props.track.items.map((items, key) =>
-                    <Grid
-                        container
-                        direction="column"
-                        justify="flex-start"
-                        alignItems="center">
-                        <Card className={classes.root}>
-                            <div className={classes.details}>
-                                <CardContent className={classes.content}>
-                                    <Typography component="h5" variant="h5">
-                                        {items.name}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="textSecondary">
-                                        {items.artists[0].name}
-                                    </Typography>
-                                </CardContent>
-                                <div className={classes.controls}>
-                                        <IconButton aria-label="play/pause" href={items.external_urls.spotify} target="_blank">
-                                            <PlayArrowIcon className={classes.playIcon} />
-                                        </IconButton>
-                                </div>
+                    <Card className={classes.root}>
+                        <div className={classes.details}>
+                            <CardContent className={classes.content}>
+                                <Typography component="h5" variant="h5">
+                                    {items.name}
+                                </Typography>
+                                <Typography variant="subtitle1" color="textSecondary">
+                                    {items.artists[0].name}
+                                </Typography>
+                            </CardContent>
+                            <div className={classes.controls}>
+                                <IconButton aria-label="play/pause" href={items.external_urls.spotify} target="_blank">
+                                    <PlayArrowIcon className={classes.playIcon} />
+                                </IconButton>
                             </div>
-                            <CardMedia
-                                className={classes.cover}
-                                image={items.album.images[0].url}
-                                title="Live from space album cover"
-                            />
-                        </Card>
-                    </Grid>
+                        </div>
+                        <CardMedia
+                            className={classes.cover}
+                            image={items.album.images[0].url}
+                            title="Live from space album cover"
+                        />
+                    </Card>
                 )}
-            </div>
+            </Grid>
 
         );
     }
@@ -87,9 +81,6 @@ function TopTracks(props) {
     return (
         <div>
             { props.track && props.track.total && <TrackList /> || <p>You dont have any top tracks</p>}
-            <div>
-                <Button onClick={get_track} className="btn">get top tracks</Button>
-            </div>
         </div>
     );
 }
