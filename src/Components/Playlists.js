@@ -16,6 +16,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import {set_playliste_data} from '../actions/action'
 
 const useStyles = makeStyles({
     root: {
@@ -112,7 +113,7 @@ function Playlists(props) {
     }
 
     React.useEffect(() => {
-        console.log('play =', play);
+        props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists"));
     });
 
     return (
