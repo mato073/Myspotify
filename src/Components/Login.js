@@ -38,7 +38,7 @@ const Login = (props) => {
 
 
   const handleLogin = () => {
-    window.location = `${authorizeUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true`;
+    window.location = `${authorizeUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true&scope=user-top-read`;
   };
 
 
