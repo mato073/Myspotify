@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Menu from './Menu';
 import SearchArtist from './Search_artist';
+import Artist from './Artist';
 import Playlists from './Playlists'
 import Profile from './Profile';
 import logo from "../images/EpitechMySpotify.svg";
@@ -26,8 +27,10 @@ class Home extends Component {
                             <p>Welcome to MySpotify an Epitech project</p>
                             <p>Infos user en string = {this.props.userdata}</p>
                             <p>Infos page en string = {this.props.page}</p>
+                            <p>Infos artist en string = {this.props.artist}</p>
                         </div>
                     }
+                    {this.props.page === 'Artist' && <Artist />}
                     {this.props.page === 'Research' && <SearchArtist />}
                     {this.props.page === 'Profile' && <Profile />}
                     {this.props.page === 'Playlist' && <Playlists />}
