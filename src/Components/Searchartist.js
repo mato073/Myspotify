@@ -59,7 +59,7 @@ function Search_artist(props) {
         } catch (error) {
         }
         return (
-            <Card className={classes.root}>
+            <Card elevation={4} className={classes.root}>
                 <CardMedia
                     className={classes.media}
                     image={image}
@@ -68,7 +68,7 @@ function Search_artist(props) {
                     <Typography gutterBottom variant="h5" component="h2" className="artist_name">
                         {props.items.name}
                     </Typography>
-                    <a href={props.items.external_urls.spotify}>Voir dans Spotify</a>
+                    <Button className={classes.btn} href={props.items.external_urls.spotify}>Spotify</Button>
                 </CardContent>
             </Card>
         );
@@ -81,7 +81,6 @@ function Search_artist(props) {
         } else {
             return (
                     <div style={{ width: '100%' }}>
-                        <h3 className="title">Liste artists</h3>
                     <div className="list_artist">
                         {data.artists.items.map((items, key) =>
                             <CardListe items={items} key={key} />

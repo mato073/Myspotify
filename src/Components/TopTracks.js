@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         width: '100%',
+        marginTop: 20
     },
     details: {
         display: 'flex',
@@ -35,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
         height: 38,
         width: 38,
     },
+    title: {
+        align: 'center',
+        color: 'black',
+    }
 }));
 
 function TopTracks(props) {
@@ -48,10 +53,11 @@ function TopTracks(props) {
 
     function TrackList() {
         return (
-
+            <di>
+            <Typography gutterBottom variant="h3"  className={classes.title}>Top tracks: </Typography>
             <Grid container direction="column" justify="flex-start" alignItems="center">
                 {props.track.items.map((items, key) =>
-                    <Card className={classes.root} flexGrow={1}>
+                    <Card elevation={4} className={classes.root} flexGrow={1}>
                         <CardMedia
                             className={classes.cover}
                             image={items.album.images[0].url}
@@ -75,7 +81,7 @@ function TopTracks(props) {
                     </Card>
                 )}
             </Grid>
-
+        </di>
         );
     }
 

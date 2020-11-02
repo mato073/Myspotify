@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {set_playliste_data, create_playlist} from '../actions/action'
+import './Searchartist.css'
 
 const useStyles = makeStyles({
     root: {
@@ -45,11 +46,12 @@ const useStyles = makeStyles({
 function Playlists(props) {
 
     const classes = useStyles();
-    const [play] = React.useState(JSON.parse(props.play));
+    var [play, setplay] = React.useState(JSON.parse(props.play));
     const [data] = React.useState(JSON.parse(props.user));
 
-    const refrech = (e) => {
-        props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists")); 
+    const  refrech = (e) => {
+        props.dispatch(set_playliste_data(props.token, "https://api.spotify.com/v1/me/playlists"));
+        setplay(JSON.parse(props.play));
     }
 
     function Cardliste(props) {
@@ -72,7 +74,7 @@ function Playlists(props) {
                     <Typography gutterBottom>
                         par: {props.items.owner.display_name}
                     </Typography>
-                    <a href={props.items.external_urls.spotify}>Voir dans Spotify</a>
+                    <Button className={classes.btn} href={props.items.external_urls.spotify}>Spotify</Button>
                 </CardContent>
             </Card>
         );
@@ -101,7 +103,7 @@ function Playlists(props) {
                 <div style={{ width: '100%'}}>
                     <Typography gutterBottom variant="h3"  className={classes.title}>Playlists: </Typography>
                     <Button className={classes.btn} onClick={refrech}>Refresh</Button>
-                    <Box display='flex'lexWrap="nowrap" flexDirection="row">
+                    <Box className="list_artist" display='flex' flexDirection="row">
                             {play.items.map((items, key) => 
                             <Cardliste  items={items} key={key}/>   
                         )}
@@ -124,7 +126,7 @@ function Playlists(props) {
 
     return (
     <div>
-        <Liste dispatch={props.dispatch}></Liste>
+        <Liste dispatch={props.dispatch} token={props.token}></Liste>
     </div>
     );
 
