@@ -7,7 +7,7 @@ L'application pérmet de se conecter à Spotify et de consulté ses musique les 
 Connextion avec Spotify oauth2
 
 <p align="center">
-  <img width="60%" height="60%" src="/image/accueil.png">    
+  <img width="60%" height="60%" src="/image/accueil.PNG">    
 </p>
 
 <p align="center">
