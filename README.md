@@ -2,7 +2,7 @@
 
 Projet développé avec [ReactJs](https://fr.reactjs.org/) la bibliothèque JavaScript développée par Facebook  et [Redux](https://redux.js.org/) pour la gestion de donnée.
 
-L'application pérmet de se conecter à Spotify et de consulté ses musique les plus écouté et crée ou de suprimé des playliste et de rechercher des artists.
+L'application permet de se connecter à Spotify et de consulter ses musiques les plus écoutées et crée ou de supprimer des play liste et de rechercher des artistes.
 
 Connextion avec Spotify oauth2
 
