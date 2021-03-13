@@ -11,24 +11,24 @@ Connextion avec Spotify oauth2
 </p>
 
 <p align="center">
-  <img width="60%" height="60%" src="/image/oauth.png">    
+  <img width="60%" height="60%" src="/image/oauth.PNG">    
 </p>
 
 Top musique
 <p align="center">
-  <img width="60%" height="60%" src="/image/topTracks.png">    
+  <img width="60%" height="60%" src="/image/topTracks.PNG">    
 </p>
 
 Playlists
 
 <p align="center">
-  <img width="60%" height="60%" src="/image/playliste.png">    
+  <img width="60%" height="60%" src="/image/playliste.PNG">    
 </p>
 
 Rechercher un artist
 
 <p align="center">
-  <img width="60%" height="60%" src="/image/search.png">    
+  <img width="60%" height="60%" src="/image/search.PNG">    
 </p>
 
 
